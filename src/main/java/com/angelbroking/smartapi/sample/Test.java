@@ -9,9 +9,7 @@ public class Test {
 
 	public static void main(String[] args) throws SmartAPIException {
 		try {
-
-			SmartConnect smartConnect = new SmartConnect("<smartapi_key>"); // PROVIDE YOUR API KEY HERE
-			
+			SmartConnect smartConnect = new SmartConnect("ahETLcPh"); // PROVIDE YOUR API KEY HERE
 			// OPTIONAL - ACCESS_TOKEN AND REFRESH TOKEN
 			// SmartConnect smartConnect = new SmartConnect("<smartapi_key>", "<YOUR_ACCESS_TOKEN>", "<YOUR_REFRESH_TOKEN>");
 
@@ -19,11 +17,11 @@ public class Test {
 			smartConnect.setSessionExpiryHook(new SessionExpiryHook() {
 				@Override
 				public void sessionExpired() {
-					System.out.println("session expired");
+					System.out.println("Angel broker session expired");
 				}
 			});
 
-			User user = smartConnect.generateSession("S212741", "abc222");
+			User user = smartConnect.generateSession("S644374", "United@2047");
 			System.out.println(user.getAccessToken());
 			smartConnect.setAccessToken(user.getAccessToken());
 			smartConnect.setUserId(user.getUserId());
@@ -37,13 +35,13 @@ public class Test {
 
 			Examples examples = new Examples();
 
-			System.out.println("getProfile");
-			examples.getProfile(smartConnect);
+//			System.out.println("getProfile");
+//			examples.getProfile(smartConnect);
 
 			System.out.println("placeOrder");
 			examples.placeOrder(smartConnect);
 
-			System.out.println("modifyOrder");
+	/*		System.out.println("modifyOrder");
 			examples.modifyOrder(smartConnect);
 
 			System.out.println("cancelOrder");
@@ -100,7 +98,7 @@ public class Test {
 			String strWatchListScript = "nse_cm|2885&nse_cm|1594&nse_cm|11536&mcx_fo|221658";
 			String task = "mw";
 			// examples.tickerUsage(clientId, feedToken, strWatchListScript, task);
-
+*/
 		} catch (Exception e) {
 			System.out.println("Exception: " + e.getMessage());
 			e.printStackTrace();

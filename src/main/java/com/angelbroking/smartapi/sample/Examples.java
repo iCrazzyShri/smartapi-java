@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,7 +14,6 @@ import com.angelbroking.smartapi.models.Gtt;
 import com.angelbroking.smartapi.models.GttParams;
 import com.angelbroking.smartapi.models.Order;
 import com.angelbroking.smartapi.models.OrderParams;
-import com.angelbroking.smartapi.models.Trade;
 import com.angelbroking.smartapi.models.User;
 import com.angelbroking.smartapi.ticker.OnConnect;
 import com.angelbroking.smartapi.ticker.OnDisconnect;
@@ -32,21 +32,100 @@ public class Examples {
 	/** Place order. */
 	public void placeOrder(SmartConnect smartConnect) throws SmartAPIException, IOException {
 
+		OrderParams orderParams = getROBOMOrder();
+		Order order = smartConnect.placeOrder(orderParams, orderParams.variety);
+	}
+
+	@NotNull
+	private OrderParams getSLMOrder() {
+		OrderParams orderParams = new OrderParams();
+		orderParams.variety = "STOPLOSS";
+		orderParams.quantity = 75;
+		orderParams.symboltoken = "62279";
+		orderParams.exchange = Constants.EXCHANGE_NFO;
+		orderParams.ordertype = "STOPLOSS_MARKET";
+		orderParams.tradingsymbol = "NIFTY27MAY2115000CE";
+		orderParams.producttype = "INTRADAY";
+		orderParams.duration = Constants.VALIDITY_DAY;
+		orderParams.transactiontype = Constants.TRANSACTION_TYPE_BUY;
+		orderParams.price = 222.0;
+		orderParams.squareoff = "100";
+		orderParams.stoploss = "100";
+		orderParams.trailingStopLoss = "200";
+		orderParams.disclosedquantity = "0";
+		orderParams.duration = "0";
+		orderParams.ordertag = "From Telegram bot";
+		orderParams.triggerprice = "122";
+		return orderParams;
+	}
+
+	@NotNull
+	private OrderParams getROBOMOrder() {
+		OrderParams orderParams = new OrderParams();
+		orderParams.variety = "ROBO";
+		orderParams.quantity = 75;
+		orderParams.symboltoken = "62279";
+		orderParams.exchange = Constants.EXCHANGE_NFO;
+		orderParams.ordertype = "STOPLOSS_LIMIT";
+		orderParams.tradingsymbol = "NIFTY27MAY2115000CE";
+		orderParams.producttype = "INTRADAY";
+		orderParams.duration = Constants.VALIDITY_DAY;
+		orderParams.transactiontype = Constants.TRANSACTION_TYPE_BUY;
+		orderParams.price = 122.2;
+		orderParams.squareoff = "100";
+		orderParams.stoploss = "100";
+		orderParams.trailingStopLoss = "100";
+		orderParams.disclosedquantity = "0";
+		orderParams.duration = "0";
+		orderParams.ordertag = "From Telegram bot";
+		orderParams.triggerprice = "122";
+		return orderParams;
+	}
+
+	@NotNull
+	private OrderParams getSLOrder() {
+		OrderParams orderParams = new OrderParams();
+		orderParams.variety = "STOPLOSS";
+		orderParams.quantity = 75;
+		orderParams.symboltoken = "62279";
+		orderParams.exchange = Constants.EXCHANGE_NFO;
+		orderParams.ordertype = "STOPLOSS_LIMIT";
+		orderParams.tradingsymbol = "NIFTY27MAY2115000CE";
+		orderParams.producttype = "INTRADAY";
+		orderParams.duration = Constants.VALIDITY_DAY;
+		orderParams.transactiontype = Constants.TRANSACTION_TYPE_BUY;
+		orderParams.price = 122.2;
+		orderParams.squareoff = "100";
+		orderParams.stoploss = "100";
+		orderParams.trailingStopLoss = "100";
+		orderParams.disclosedquantity = "0";
+		orderParams.duration = "0";
+		orderParams.ordertag = "From Telegram bot";
+		orderParams.triggerprice = "122";
+		return orderParams;
+	}
+
+	@NotNull
+	private OrderParams getLimitOrder() {
 		OrderParams orderParams = new OrderParams();
 		orderParams.variety = "NORMAL";
-		orderParams.quantity = 1;
-		orderParams.symboltoken = "3045";
-		orderParams.exchange = Constants.EXCHANGE_NSE;
+		orderParams.quantity = 75;
+		orderParams.symboltoken = "62279";
+		orderParams.exchange = Constants.EXCHANGE_NFO;
 		orderParams.ordertype = Constants.ORDER_TYPE_LIMIT;
-		orderParams.tradingsymbol = "SBIN-EQ";
+		orderParams.tradingsymbol = "NIFTY27MAY2115000CE";
 		orderParams.producttype = Constants.PRODUCT_INTRADAY;
 		orderParams.duration = Constants.VALIDITY_DAY;
 		orderParams.transactiontype = Constants.TRANSACTION_TYPE_BUY;
 		orderParams.price = 122.2;
-		orderParams.squareoff = "0";
-		orderParams.stoploss = "0";
-
-		Order order = smartConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+		orderParams.squareoff = "100";
+		orderParams.stoploss = "100";
+		orderParams.trailingStopLoss = "100";
+		orderParams.disclosedquantity = "0";
+		orderParams.duration = "0";
+		orderParams.ordertag = "From Telegram bot";
+		orderParams.triggerprice = "122";
+		return orderParams;
 	}
 
 	/** Modify order. */

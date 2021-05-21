@@ -294,6 +294,18 @@ public class SmartConnect {
 			if (orderParams.stoploss != null)
 				params.put("stoploss", orderParams.stoploss);
 
+			if (orderParams.disclosedquantity != null)
+				params.put("disclosedquantity", orderParams.disclosedquantity);
+
+			if (orderParams.ordertag != null)
+				params.put("ordertag", orderParams.ordertag);
+
+			if (orderParams.trailingStopLoss != null)
+				params.put("trailingStopLoss", orderParams.trailingStopLoss);
+
+			if (orderParams.triggerprice != null)
+				params.put("triggerprice", orderParams.triggerprice);
+
 			params.put("variety", variety);
 
 			JSONObject jsonObject = smartAPIRequestHandler.postRequest(this.apiKey, url, params, accessToken);
@@ -301,7 +313,7 @@ public class SmartConnect {
 			order.orderId = jsonObject.getJSONObject("data").getString("orderid");
 			return order;
 		} catch (Exception | SmartAPIException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 			return null;
 		}
 	}

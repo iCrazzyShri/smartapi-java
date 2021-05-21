@@ -1,71 +1,77 @@
 package com.angelbroking.smartapi.models;
 
-/** A wrapper for order params to be sent while placing an order. */
+/**
+ * A wrapper for order params to be sent while placing an order.
+ */
 public class OrderParams {
 
-	public String orderid;
-	/**
-	 * Exchange in which instrument is listed (NSE, BSE, NFO, BFO, CDS, MCX).
-	 */
+    public String orderid;
+    /**
+     * Exchange in which instrument is listed (NSE, BSE, NFO, BFO, CDS, MCX).
+     */
 
-	public String exchange;
+    public String exchange;
 
-	/**
-	 * symboltoken of the instrument.
-	 */
+    /**
+     * symboltoken of the instrument.
+     */
 
-	public String symbolToken;
+    public String symbolToken;
 
-	/**
-	 * Transaction type (BUY or SELL).
-	 */
+    /**
+     * Transaction type (BUY or SELL).
+     */
 
-	public String transactiontype;
+    public String transactiontype;
 
-	/**
-	 * Order quantity
-	 */
+    /**
+     * Order quantity
+     */
 
-	public Integer quantity;
+    public Integer quantity;
 
-	/**
-	 * Order Price
-	 */
+    /**
+     * Order Price
+     */
 
-	public Double price;
+    public Double price;
 
-	/**
-	 * producttype code (NRML, MIS, CNC).
-	 */
+    /**
+     * producttype code (NRML, MIS, CNC).
+     */
 
-	public String producttype;
+    public String producttype;
 
-	/**
-	 * Order type (LIMIT, SL, SL-M, MARKET).
-	 */
+    /**
+     * Order type (LIMIT, SL, SL-M, MARKET).
+     */
 
-	public String ordertype;
+    public String ordertype;
 
-	/**
-	 * Order duration (DAY, IOC).
-	 */
+    /**
+     * Order duration (DAY, IOC).
+     */
 
-	public String duration;
+    public String duration;
 
-	/**
-	 * variety
-	 */
+    /**
+     * variety
+     */
 
-	public String variety;
+    public String variety;
 
-	/**
-	 * Order duration (DAY, IOC).
-	 */
+    /**
+     * Order duration (DAY, IOC).
+     */
 
-	public String tradingsymbol;
+    public String tradingsymbol;
 
-	public String squareoff;
-	public String stoploss;
-	public String symboltoken;
+    public String squareoff;
+    public String stoploss;
+    public String symboltoken;
+    public String disclosedquantity;
+    public String ordertag;
+    public String trailingStopLoss;
+    public String triggerprice;
 
 }
