@@ -197,7 +197,7 @@ public class Examples {
 	/** Get Position */
 	public void getPosition(SmartConnect smartConnect) throws SmartAPIException, IOException {
 		// Returns Position.
-		JSONObject response = smartConnect.getPosition();
+		JSONArray response = smartConnect.getPosition();
 	}
 
 	/** convert Position */
@@ -212,7 +212,7 @@ public class Examples {
 		requestObejct.put("quantity", 1);
 		requestObejct.put("type", "DAY");
 
-		JSONObject response = smartConnect.getPosition();
+		JSONArray response = smartConnect.getPosition();
 	}
 	/** Create Gtt Rule*/
 	public void createRule(SmartConnect smartConnect)throws SmartAPIException,IOException{

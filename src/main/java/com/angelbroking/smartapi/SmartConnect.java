@@ -314,7 +314,7 @@ public class SmartConnect {
 			return order;
 		} catch (Exception | SmartAPIException e) {
 			e.printStackTrace();
-			return null;
+			throw new RuntimeException("Failed to post request",e);
 		}
 	}
 
@@ -350,7 +350,43 @@ public class SmartConnect {
 				params.put("ordertype", orderParams.ordertype);
 			if (orderParams.duration != null)
 				params.put("duration", orderParams.duration);
+			if (orderParams.exchange != null)
+				params.put("exchange", orderParams.exchange);
+			if (orderParams.tradingsymbol != null)
+				params.put("tradingsymbol", orderParams.tradingsymbol);
+			if (orderParams.transactiontype != null)
+				params.put("transactiontype", orderParams.transactiontype);
+			if (orderParams.quantity != null)
+				params.put("quantity", orderParams.quantity);
+			if (orderParams.price != null)
+				params.put("price", orderParams.price);
+			if (orderParams.producttype != null)
+				params.put("producttype", orderParams.producttype);
+			if (orderParams.ordertype != null)
+				params.put("ordertype", orderParams.ordertype);
+			if (orderParams.duration != null)
+				params.put("duration", orderParams.duration);
+			if (orderParams.price != null)
+				params.put("price", orderParams.price);
+			if (orderParams.symboltoken != null)
+				params.put("symboltoken", orderParams.symboltoken);
+			if (orderParams.squareoff != null)
+				params.put("squareoff", orderParams.squareoff);
+			if (orderParams.stoploss != null)
+				params.put("stoploss", orderParams.stoploss);
 
+			if (orderParams.disclosedquantity != null)
+				params.put("disclosedquantity", orderParams.disclosedquantity);
+
+			if (orderParams.ordertag != null)
+				params.put("ordertag", orderParams.ordertag);
+
+			if (orderParams.trailingStopLoss != null)
+				params.put("trailingStopLoss", orderParams.trailingStopLoss);
+
+			if (orderParams.triggerprice != null)
+				params.put("triggerprice", orderParams.triggerprice);
+			
 			params.put("variety", variety);
 			params.put("orderid", orderId);
 
@@ -403,7 +439,6 @@ public class SmartConnect {
 		try {
 			String url = routes.get("api.order.book");
 			JSONObject response = smartAPIRequestHandler.getRequest(this.apiKey, url, accessToken);
-			System.out.println(response);
 			return response;
 		} catch (Exception | SmartAPIException e) {
 			System.out.println("Exception#: " + e.getMessage());
@@ -496,11 +531,11 @@ public class SmartConnect {
 	 * @return Object of position.
 	 * 
 	 */
-	public JSONObject getPosition() {
+	public JSONArray getPosition() {
 		try {
 			String url = routes.get("api.order.rms.position");
 			JSONObject response = smartAPIRequestHandler.getRequest(this.apiKey, url, accessToken);
-			return response.getJSONObject("data");
+			return response.getJSONArray("data");
 		} catch (Exception | SmartAPIException e) {
 			System.out.println(e.getMessage());
 			return null;
