@@ -24,7 +24,7 @@ public class SmartAPIResponseHandler {
 
 	public JSONObject handle(Response response, String body) throws IOException, SmartAPIException, JSONException {
 		System.out.println("***************************");
-		if (response.header("Content-Type").contains("json")) {
+		if (response!= null && response.header("Content-Type") != null && response.header("Content-Type").contains("json")) {
 			JSONObject jsonObject = new JSONObject(body);
 			
 //			if (jsonObject.optString("data") == null || jsonObject.optString("data") == "") {
@@ -39,8 +39,7 @@ public class SmartAPIResponseHandler {
 			//System.out.println(jsonObject);
 			return jsonObject;
 		} else {
-			throw new DataException("Unexpected content type received from server: " + response.header("Content-Type")
-					+ " " + response.body().string(), "AG8001");
+			return new JSONObject("{}");
 		}
 	}
 
